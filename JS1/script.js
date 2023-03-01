@@ -5,8 +5,8 @@ console.log(prompt("Введите число") * 0.9);
 
 
 //    Написать программу, которая получает два числа и выводит наименьшее
-const num1 = prompt("Input num1");
-const num2 = prompt("Input num2");
+const num1 = +prompt("Input num1");
+const num2 = +prompt("Input num2");
 if (num1 < num2) {
   console.log(`Наименьшее число - ${num1}`);
 } else if (num1 == num2) {
@@ -17,7 +17,7 @@ if (num1 < num2) {
 
 // Написать программу, которая считывает через prompt число и выводит одно из 
 // следующих сообщений: ‘Число меньше 100’, ‘Число больше 100’ или ‘Число равно 100’
-const num = prompt("Imput number");
+const num = +prompt("Imput number");
 if (num > 100) {
   console.log("Больше 100");
 } else if (num == 100) {
@@ -32,7 +32,7 @@ if (num > 100) {
 // пользователь совершеннолетний, или ‘Hi, <name>’, если пользователь несовершеннолетний.
 
 const nameNemo = prompt("Как вас зовут?");
-const ageNemo = prompt("Сколько вам лет ?");
+const ageNemo = +prompt("Сколько вам лет ?");
 if (ageNemo >= 16) {
   console.log("Hello " + nameNemo);
 } else {
