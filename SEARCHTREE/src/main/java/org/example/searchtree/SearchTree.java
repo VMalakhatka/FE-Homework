@@ -113,11 +113,11 @@ public class SearchTree {
 
     private String searchByValueDFS(Node current, Integer value) {
         if (current == null) {
-            return null; // Если текущий узел null, значит, значение не найдено
+            return null;
         }
 
         if (current.value.equals(value)) {
-            return current.key; // Найдено соответствующее значение
+            return current.key;
         }
 
         // Рекурсивный поиск в левом поддереве
@@ -129,6 +129,24 @@ public class SearchTree {
         // Рекурсивный поиск в правом поддереве
         return searchByValueDFS(current.right, value);
     }
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    private boolean isBalanced(Node node) {
+        if (node == null) {
+            return true;
+        }
+
+        int leftHeight = getHeight(node.left);
+        int rightHeight = getHeight(node.right);
+
+        if (Math.abs(leftHeight - rightHeight) <= 1 && isBalanced(node.left) && isBalanced(node.right)) {
+            return true;
+        }
+
+        return false;
+    }
 
     public int getHeight() {
         return getHeight(root);
@@ -136,7 +154,7 @@ public class SearchTree {
 
     private int getHeight(Node current) {
         if (current == null) {
-            return 0; // Высота пустого узла равна 0
+            return 0;
         }
 
         int leftHeight = getHeight(current.left);
@@ -174,6 +192,7 @@ public class SearchTree {
         System.out.println("searchByValueBFS: " + tree.searchByValueBFS(90));
         System.out.println("searchByValueDFS: " + tree.searchByValueDFS(40));
         System.out.println("height oh tree is  "+tree.getHeight());
+        System.out.println("isBalanced " + tree.isBalanced());
     }
 
 }
