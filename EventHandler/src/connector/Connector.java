@@ -7,14 +7,10 @@ class Connector {
     private static int connectionWaitTime = -1;
     private static FastConnection fastConnection;
 
-    public static void setConnectionWaitTime() {
-        if (connectionWaitTime == -1) {
-            connectionWaitTime = random.nextInt(500); // время ожидания
-        }
-    }
+   
 
     public static synchronized Connection getConnection() {
-        setConnectionWaitTime();
+        connectionWaitTime = random.nextInt(500);
         if (connectionWaitTime < 300) {
             if (fastConnection==null)
                 return fastConnection=new FastConnection("localhost", 8080, "HTTP");
