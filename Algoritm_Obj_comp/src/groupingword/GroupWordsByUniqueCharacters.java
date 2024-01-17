@@ -4,13 +4,6 @@ import java.util.*;
 
 public class GroupWordsByUniqueCharacters {
 
-    public static String SortChar(String word){
-        // Преобразуем символы слова в массив символов, сортируем и объединяем обратно в строку
-        char[] charArray = word.toCharArray();
-        Arrays.sort(charArray);
-        return new String(charArray);
-    }
-
     private static Set<Character> arrayToSet(char[] charArray) {
         Set<Character> charSet = new HashSet<>();
         for (char c : charArray) {
@@ -31,11 +24,10 @@ public class GroupWordsByUniqueCharacters {
     public static List<List<String>> groupWords(String[] words) {
         TreeMap<String, List<String>> groupsMap = new TreeMap<>(new KeyComparator());
 
-        for (String word : words) {
-            String sortedWord=SortChar(word);
+        for (String word : words) 
             // Добавляем слово в соответствующую группу
-            groupsMap.computeIfAbsent(sortedWord, k -> new ArrayList<>()).add(word);
-        }
+            groupsMap.computeIfAbsent(word, k -> new ArrayList<>()).add(word);
+
         // Преобразуем значения карты в список списков
         return new ArrayList<>(groupsMap.values());
     }
