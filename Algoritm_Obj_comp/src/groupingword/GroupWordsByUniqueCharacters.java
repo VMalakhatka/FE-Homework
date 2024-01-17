@@ -14,17 +14,15 @@ public class GroupWordsByUniqueCharacters {
     static class KeyComparator implements Comparator<String> {
         @Override
         public int compare(String str1, String str2) {
-            char[] charArray = str1.toCharArray();
-            Set<Character> charSet1 = arrayToSet(charArray);
-            char[] charArray2 = str2.toCharArray();
-            Set<Character> charSet2 = arrayToSet(charArray2);
+            Set<Character> charSet1 = arrayToSet(str1.toCharArray());
+            Set<Character> charSet2 = arrayToSet(str2.toCharArray());
             return charSet2.equals(charSet1)==true ? 0:1;
         }
     }
     public static List<List<String>> groupWords(String[] words) {
         TreeMap<String, List<String>> groupsMap = new TreeMap<>(new KeyComparator());
 
-        for (String word : words) 
+        for (String word : words)
             // Добавляем слово в соответствующую группу
             groupsMap.computeIfAbsent(word, k -> new ArrayList<>()).add(word);
 
