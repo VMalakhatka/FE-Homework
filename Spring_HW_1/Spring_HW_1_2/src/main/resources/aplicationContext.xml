@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="customer" class="com.malakhatkave.pojo.Customer" scope="prototype">
+        <constructor-arg index="0" value="+491780493584"/>
+        <constructor-arg index="1" value="opwei@poiu.com"/>
+    </bean>
+    <bean id="emailNotificationServiceImpl" class="com.malakhatkave.pojo.EmailNotificationServiceImpl"/>
+    <bean id="smsNotificationServiceImpl" class="com.malakhatkave.pojo.SmsNotificationServiceImpl"/>
+    <bean id="notificationService" class="com.malakhatkave.pojo.NotificationService">
+        <constructor-arg ref="smsNotificationServiceImpl"/>
+        <constructor-arg ref="emailNotificationServiceImpl"/>
+    </bean>
+
+</beans>
