@@ -4,9 +4,13 @@ import jakarta.annotation.PreDestroy;
 import org.example.todo.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 @Component
+@DependsOn({"emailNotificationService",
+        "smsNotificationService",
+        "pushNotificationService"})
 public class TaskNotification {
     NotificationService urgentN;
     NotificationService middle;

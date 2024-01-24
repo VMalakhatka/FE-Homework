@@ -23,12 +23,13 @@ public class Connector {
 
     @PostConstruct
     public void initialize() {
-        System.out.println("Подключились к серверу..");
+        if(isConnect) System.out.println("Подключились к серверу..");
+        else System.out.println("Ошибка подключения");
     }
 
 
     @PreDestroy
     public void close() {
-        System.out.println("Закрыли подключение к серверу..");
+        if (isConnect) System.out.println("Закрыли подключение к серверу..");
     }
 }
